@@ -86,7 +86,7 @@ const TodoApp = () => {
                     className="flex-1 border rounded px-3 py-2 mr-2"
                     placeholder={editingTaskId !== null ? "Edit task..." : "Add a new task..."}
                 />
-                <button onClick={handleAddTask} className="btn mx-1">
+                <button onClick={handleAddTask} className="btn mx-1 !bg-black">
                     {editingTaskId !== null ? "Update Task" : "Add Task"}
                 </button>
             </div>
@@ -99,7 +99,7 @@ const TodoApp = () => {
                     </div>
                     <div>
                         <button onClick={handleToggleSort} className="btn rounded px-4 py-2 mx-1">Sort&nbsp;<FontAwesomeIcon icon={faSort} /></button>
-                        <button onClick={handleClearAll} className="btn mx-1">Clear All</button>
+                        <button onClick={handleClearAll} className="btn mx-1 !bg-red-500">Clear All</button>
                     </div>
                 </div>
             )}
@@ -123,14 +123,14 @@ const TodoApp = () => {
                                 {!todo.completed && (
                                     <button
                                         onClick={() => handleEditTask(todo.id)}
-                                        className="flex items-center justify-center text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8"
+                                        className="flex items-center justify-center text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 transition duration-200 rounded-full w-8 h-8"
                                     >
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
                                 )}
                                 <button
                                     onClick={() => deleteTask(todo.id)}
-                                    className="flex items-center justify-center text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8"
+                                    className="flex items-center justify-center text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 transition duration-200 rounded-full w-8 h-8"
                                 >
                                     <FontAwesomeIcon icon={faTrash} />
                                 </button>
