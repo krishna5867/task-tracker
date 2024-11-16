@@ -75,31 +75,31 @@ const TodoApp = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-4 shadow-sm rounded-md my-6 bg-white">
+        <div className="max-w-3xl mx-auto p-4 shadow-sm rounded-md md:my-6 bg-white">
             <h1 className="text-2xl font-bold text-center mb-4">Persistent Task Tracker</h1>
-            <div className="flex mb-4">
+            <div className="flex flex-col sm:flex-row gap-2 mb-4">
                 <input
                     type="text"
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
                     onKeyDown={handleAddTask}
-                    className="flex-1 border rounded px-3 py-2 mr-2"
+                    className="flex-1 border-2 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-200"
                     placeholder={editingTaskId !== null ? "Edit task..." : "Add a new task..."}
                 />
-                <button onClick={handleAddTask} className="btn mx-1 !bg-black">
+                <button onClick={handleAddTask} className="btn sm:mx-1 !bg-black">
                     {editingTaskId !== null ? "Update Task" : "Add Task"}
                 </button>
             </div>
             {storedTasks.length > 0 && (
-                <div className="flex justify-between mb-4">
-                    <div>
-                        <button onClick={() => setFilter('all')} className="btn mx-1">All</button>
-                        <button onClick={() => setFilter('pending')} className="btn mx-1">Pending</button>
-                        <button onClick={() => setFilter('completed')} className="btn mx-1">Completed</button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-between mb-4">
+                    <div className='flex flex-wrap items-center gap-y-4 gap-x-2'>
+                        <button onClick={() => setFilter('all')} className="btn">All</button>
+                        <button onClick={() => setFilter('pending')} className="btn">Pending</button>
+                        <button onClick={() => setFilter('completed')} className="btn">Completed</button>
                     </div>
-                    <div>
-                        <button onClick={handleToggleSort} className="btn rounded px-4 py-2 mx-1">Sort&nbsp;<FontAwesomeIcon icon={faSort} /></button>
-                        <button onClick={handleClearAll} className="btn mx-1 !bg-red-500">Clear All</button>
+                    <div className='flex gap-x-2'>
+                        <button onClick={handleToggleSort} className="btn rounded px-4 py-2">Sort&nbsp;<FontAwesomeIcon icon={faSort} /></button>
+                        <button onClick={handleClearAll} className="btn !bg-red-500">Clear All</button>
                     </div>
                 </div>
             )}
@@ -123,7 +123,7 @@ const TodoApp = () => {
                                 {!todo.completed && (
                                     <button
                                         onClick={() => handleEditTask(todo.id)}
-                                        className="flex items-center justify-center text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 transition duration-200 rounded-full w-8 h-8"
+                                        className="flex items-center justify-center text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 transition duration-200 rounded-full w-8 h-8"
                                     >
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
