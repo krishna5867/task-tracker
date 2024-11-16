@@ -11,7 +11,7 @@ const TodoApp = () => {
     const [editingTaskId, setEditingTaskId] = useState(null);
 
 
-    const handleTaskAction = (e) => {
+    const handleAddTask = (e) => {
         if (e.key === 'Enter' || e.type === 'click') {
             if (taskInput.trim()) {
                 if (editingTaskId !== null) {
@@ -82,11 +82,11 @@ const TodoApp = () => {
                     type="text"
                     value={taskInput}
                     onChange={(e) => setTaskInput(e.target.value)}
-                    onKeyDown={handleTaskAction}
+                    onKeyDown={handleAddTask}
                     className="flex-1 border rounded px-3 py-2 mr-2"
                     placeholder={editingTaskId !== null ? "Edit task..." : "Add a new task..."}
                 />
-                <button onClick={handleTaskAction} className="btn mx-1">
+                <button onClick={handleAddTask} className="btn mx-1">
                     {editingTaskId !== null ? "Update Task" : "Add Task"}
                 </button>
             </div>
